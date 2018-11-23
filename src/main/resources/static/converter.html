@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/styles.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <title>Конвертор валют</title>
+</head>
+<body>
+<script src="js/script.js"></script>
+
+<h1 align="center">Конвертор валют</h1>
+<h2 align="center">
+    <a href="/">Курсы валют</a>
+</h2>
+<div ng-app="myApp" ng-controller="myCtrl">
+    <table align="center">
+        <tr>
+            <td>Дата</td>
+            <td>
+                <select ng-model="course"
+                        ng-options="course as course for course in rates"
+                        ng-change="updateRates()"
+                >
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Конвертировать</td>
+            <td>
+                <form>
+                    <input type="number" ng-model="count" ng-change="check()">
+                </form>
+            </td>
+            <td>
+                <select ng-options="from as from for from in currencies"
+                        ng-model="from"
+                        ng-change="check()">
+                </select>
+            </td>
+            <td>
+                <p> В </p>
+            </td>
+            <td>
+                <select ng-options="to as to for to in currencies"
+                        ng-model="to"
+                        ng-change="check()">
+                </select>
+            </td>
+            <td ng-show="convertValue>=0">
+                <p>{{convertValue | number : 2}}</p>
+            </td>
+        </tr>
+    </table>
+
+</div>
+</body>
+</html>

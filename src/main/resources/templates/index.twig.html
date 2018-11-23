@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/styles.css"/>
+    <script>src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <title>Курсы валют</title>
+</head>
+<body>
+<h2 align="center">Курсы валют</h2>
+<h2 align="center">
+    <a href="/converter.html">Конвертировать валюту</a>
+</h2>
+<table border="1" align="center">
+    {% for rates in data%}
+    <tr>
+        <th>Дата</th>
+        <th>базовая валюта</th>
+    </tr>
+    <tr>
+        <td>{=rates.date|date("dd-M-YYYY")=}</td>
+        <td>{=rates.base=}</td>
+    </tr>
+    <tr>
+        <th></th>
+        <th>Валюта</th>
+        <th>Курс</th>
+    </tr>
+    {%for currency in rates.currencies%}
+    <tr><td></td>
+        <td>{=currency.name=}</td>
+        <td>{=currency.value=}</td>
+    </tr>
+    {% endfor %}
+    {% endfor %}
+
+</table>
+</body>
+</html>
